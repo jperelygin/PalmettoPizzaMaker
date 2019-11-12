@@ -51,8 +51,20 @@ public class Order {
         return result;
     }
 	
+	private boolean checkSize(){
+		if(pizzaArray.size() < 11){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public void addPizza(Pizza pizza){
-		pizzaArray.add(pizza);
+		if(checkSize()){
+			pizzaArray.add(pizza);
+		} else {
+			throw new ArrayStoreException("Too many pizzas!");
+		}
 	}
 
     @Override
