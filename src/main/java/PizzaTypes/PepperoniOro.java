@@ -7,15 +7,15 @@ import Ingredients.TomatoPaste;
 
 public class PepperoniOro extends Pizza {
 
-    PepperoniOro(){
-        this.ingridients.add(new TomatoPaste());
-        this.ingridients.add(new Cheese());
-        this.ingridients.add(new Pepperoni());
-        this.ingridients.add(new Olives());
+    public PepperoniOro(){
+        this.ingredients.add(new TomatoPaste());
+        this.ingredients.add(new Cheese());
+        this.ingredients.add(new Pepperoni());
+        this.ingredients.add(new Olives());
     }
 	
-	PepperoniOro(String orderNumber, int clientNumber, int numberInRow, boolean isCalzone) {
-        this();
+	public PepperoniOro(String orderNumber, int clientNumber, int numberInRow, boolean isCalzone) {
+        super();
 		this.orderNumber = orderNumber;
         this.clientNumber = clientNumber;
         this.numberInRow = numberInRow;

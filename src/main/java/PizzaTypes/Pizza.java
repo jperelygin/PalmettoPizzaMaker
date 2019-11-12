@@ -7,17 +7,18 @@ import java.util.ArrayList;
 public class Pizza {
 
     boolean isCalzone = false;
-    ArrayList<Ingredient> ingridients;
+    ArrayList<Ingredient> ingredients = new ArrayList<>();
     String pizzaName = "";
     int numberOfPizzas;
 
     String orderNumber;
 	int clientNumber;
+	// how to get this number in row?
     int numberInRow;
 
-    Pizza(){}
+    public Pizza(){}
 
-    Pizza(String orderNumber, int clientNumber, int numberInRow, boolean isCalzone) {
+    public Pizza(String orderNumber, int clientNumber, int numberInRow, boolean isCalzone) {
         this.orderNumber = orderNumber;
         this.clientNumber = clientNumber;
         this.numberInRow = numberInRow;
@@ -37,7 +38,7 @@ public class Pizza {
         if(isCalzone){
             result += 0.5;
         }
-        for(Ingredient i : ingridients){
+        for(Ingredient i : ingredients){
             result += i.getPrice();
         }
         return result * this.numberOfPizzas;
@@ -52,10 +53,10 @@ public class Pizza {
     }
 
     public void addIngredient(Ingredient ingredient){
-        if(ingridients.size() > 7) {
+        if(ingredients.size() > 7) {
             throw new IndexOutOfBoundsException("PizzaTypes.Pizza is full!");
         }
-        for(Ingredient i : ingridients){
+        for(Ingredient i : ingredients){
             if(i.getClass().getName().equals(ingredient.getClass().getName())){
                 throw new ArrayStoreException("PizzaTypes.Pizza can't contain 2 equal ingredients. Check your order.");
             }
@@ -69,7 +70,8 @@ public class Pizza {
         }else {
             sb.append("Pizza Base (Original)\t1,00 Eu\n");
         }
-        for(Ingredient i : ingridients){
+		//System.out.println("Ingredients: " + this.ingredients.toString());
+        for(Ingredient i : this.ingredients){
             sb.append(i.getClass().getName() + "\t" + i.getPrice() + " Eu\n");
         }
         return sb.toString();

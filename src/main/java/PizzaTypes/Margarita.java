@@ -7,16 +7,16 @@ import Ingredients.TomatoPaste;
 
 public class Margarita extends Pizza {
 
-    Margarita(){
+    public Margarita(){
         // it is not a proper Margarita, but ingredient list was in the task.
-        this.ingridients.add(new TomatoPaste());
-        this.ingridients.add(new Cheese());
-        this.ingridients.add(new Garlic());
-        this.ingridients.add(new Salami());
+        this.ingredients.add(new TomatoPaste());
+        this.ingredients.add(new Cheese());
+        this.ingredients.add(new Garlic());
+        this.ingredients.add(new Salami());
     }
 	
-	Margarita(String orderNumber, int clientNumber, int numberInRow, boolean isCalzone) {
-        this();
+	public Margarita(String orderNumber, int clientNumber, int numberInRow, boolean isCalzone) {
+        super();
 		this.orderNumber = orderNumber;
         this.clientNumber = clientNumber;
         this.numberInRow = numberInRow;

@@ -1,4 +1,7 @@
 import PizzaTypes.Pizza;
+import PizzaTypes.Margarita;
+import PizzaTypes.PepperoniOro;
+import java.util.ArrayList;
 
 public class Order {
 
@@ -6,7 +9,7 @@ public class Order {
 	
     private String orderNumber;
     private int clientNumber;
-    Pizza[] pizzaArray = new Pizza[10];
+    ArrayList<Pizza> pizzaArray = new ArrayList<>();
 
     Order(int clientNumber){
 		this.clientNumber = clientNumber;
