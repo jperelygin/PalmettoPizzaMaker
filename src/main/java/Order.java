@@ -2,30 +2,43 @@ import PizzaTypes.Pizza;
 
 public class Order {
 
-    private int orderNumer;
+	private static int orderNumberCounter = 1;
+	
+    private String orderNumber;
     private int clientNumber;
     Pizza[] pizzaArray = new Pizza[10];
 
-    Order(int orderNumer){
-        this.orderNumer = orderNumer;
+    Order(int clientNumber){
+		this.clientNumber = clientNumber;
+		setOrderNumber(Order.orderNumberCounter);
+		Order.incOrderNumberCounter();
     }
+	
+	private static void incOrderNumberCounter(){
+		Order.orderNumberCounter++;
+	}
+	
+	private void setOrderNumber(int order){
+		if(order > 99999){
+            this.orderNumber = Integer.toString(order % 100000);
+        } else if (Integer.toString(order).length() < 5){
+            this.orderNumber = Integer.toString(order);
+            while(this.orderNumber.length() < 5){
+                this.orderNumber = "0" + this.orderNumber;
+            }
+        } else {
+            this.orderNumber = Integer.toString(order);
+        }
+		
+	}
 
     public String getOrderNumber(){
-        String orderNumberString;
-        if(this.orderNumer > 99999){
-            orderNumberString = Integer.toString(this.orderNumer % 100000);
-        }
-        else if (Integer.toString(orderNumer).length() < 5){
-            orderNumberString = Integer.toString(orderNumer);
-            while(orderNumberString.length() < 5){
-                orderNumberString = "0" + orderNumberString;
-            }
-        }
-        else {
-            orderNumberString = Integer.toString(orderNumer);
-        }
-        return orderNumberString;
+        return this.orderNumber;
     }
+	
+	public int getClientNumber(){
+		return this.clientNumber;
+	}
 
     private double totalOrderPrice(){
         double result = 0;
@@ -34,15 +47,19 @@ public class Order {
         }
         return result;
     }
+	
+	public void addPizza(Pizza pizza){
+		pizzaArray.add(pizza);
+	}
 
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        // Multiplying "stars"
+        // Multiplying "stars" and "lines"
         String stars = new String(new char[32]).replace("\0", "*") + "\n";
         String line = new String(new char[32]).replace("\0", "-") + "\n";
         sb.append(stars);
-        sb.append("Order: " + this.orderNumer + "\n");
+        sb.append("Order: " + this.orderNumber + "\n");
         sb.append("Client: " + this.clientNumber + "\n");
         for(Pizza p : pizzaArray){
             sb.append("Pizza Name: " + p.getClass().getName() + "\n");

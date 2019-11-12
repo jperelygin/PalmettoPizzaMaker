@@ -12,14 +12,14 @@ public class Pizza {
     int numberOfPizzas;
 
     String orderNumber;
-    String clientNumber;
+	int clientNumber;
     int numberInRow;
 
     Pizza(){}
 
-    Pizza(String orderNumber, String clientName, int numberInRow, boolean isCalzone) {
+    Pizza(String orderNumber, int clientNumber, int numberInRow, boolean isCalzone) {
         this.orderNumber = orderNumber;
-        this.clientNumber = clientName;
+        this.clientNumber = clientNumber;
         this.numberInRow = numberInRow;
         this.isCalzone = isCalzone;
     }

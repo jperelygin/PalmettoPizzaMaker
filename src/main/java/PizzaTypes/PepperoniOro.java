@@ -13,5 +13,13 @@ public class PepperoniOro extends Pizza {
         this.ingridients.add(new Pepperoni());
         this.ingridients.add(new Olives());
     }
+	
+	PepperoniOro(String orderNumber, int clientNumber, int numberInRow, boolean isCalzone) {
+        this();
+		this.orderNumber = orderNumber;
+        this.clientNumber = clientNumber;
+        this.numberInRow = numberInRow;
+        this.isCalzone = isCalzone;
+    }
 
 }

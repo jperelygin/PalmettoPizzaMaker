@@ -14,4 +14,12 @@ public class Margarita extends Pizza {
         this.ingridients.add(new Garlic());
         this.ingridients.add(new Salami());
     }
+	
+	Margarita(String orderNumber, int clientNumber, int numberInRow, boolean isCalzone) {
+        this();
+		this.orderNumber = orderNumber;
+        this.clientNumber = clientNumber;
+        this.numberInRow = numberInRow;
+        this.isCalzone = isCalzone;
+    }
 }
