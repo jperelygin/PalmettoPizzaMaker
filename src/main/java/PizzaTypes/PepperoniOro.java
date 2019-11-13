@@ -15,7 +15,7 @@ public class PepperoniOro extends Pizza {
     }
 	
 	public PepperoniOro(String orderNumber, int clientNumber, int numberInRow, boolean isCalzone) {
-        super();
+        this();
 		this.orderNumber = orderNumber;
         this.clientNumber = clientNumber;
         this.numberInRow = numberInRow;

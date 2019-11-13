@@ -17,7 +17,7 @@ public class Margarita extends Pizza {
     }
 	
 	public Margarita(String orderNumber, int clientNumber, int numberInRow, boolean isCalzone) {
-        super();
+        this();
 		this.orderNumber = orderNumber;
         this.clientNumber = clientNumber;
         this.numberInRow = numberInRow;
