@@ -23,13 +23,22 @@ public class Pizza {
         this.clientNumber = clientNumber;
         this.numberInRow = numberInRow;
         this.isCalzone = isCalzone;
+        this.numberOfPizzas = 1;
     }
 
-    private String checkPizzaName(){
+    public void setPizzaName(String pizzaName) {
+        checkPizzaName(pizzaName);
+    }
+
+    public String getPizzaName(){
+        return this.pizzaName;
+    }
+
+    private void checkPizzaName(String pizzaName){
         if(pizzaName.length() > 4 && pizzaName.length() < 21) {
-            return pizzaName;
+            this.pizzaName = pizzaName;
         }else{
-            return clientNumber + "_" + numberInRow;
+            this.pizzaName = clientNumber + "_" + numberInRow;
         }
     }
 

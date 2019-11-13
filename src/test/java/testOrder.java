@@ -49,7 +49,7 @@ public class testOrder {
         // p2 = 4.8 Eu
         order.addPizza(p1);
         order.addPizza(p2);
-        Assert.assertEquals(10.1, order.getTotalOrderPrice(), 0.1);
+        Assert.assertEquals(10.1, order.getTotalOrderPrice(), 0.001);
     }
 
     @Test
@@ -79,6 +79,32 @@ public class testOrder {
         expectedException.expect(ArrayStoreException.class);
         expectedException.expectMessage("Too many pizzas!");
         order.addPizza(p);
+    }
+
+    @Test
+    public void testReciept(){
+        StringBuilder sb = new StringBuilder();
+        String stars = new String(new char[32]).replace("\0", "*") + "\n";
+        String line = new String(new char[32]).replace("\0", "-") + "\n";
+        
+        sb.append(stars);
+        sb.append("Order: 00001\n");
+        sb.append("Client: 1\n");
+        sb.append("Pizza Name: BzPizza\n");
+        sb.append(line);
+        sb.append("Pizza Base (Calzone)\t1.50 Eu\n");
+        sb.append(line);
+        sb.append("Total:\t\t1.5\n");
+        sb.append("Pizzas:\t\t1\n") ;
+        sb.append(line);
+        sb.append("Total amount:\t1.5 Eu\n");
+        sb.append(stars);
+
+        Order order = new Order(1);
+        Pizza p = new Pizza(order.getOrderNumber(), order.getClientNumber(), 1, true);
+        order.addPizza(p);
+
+        Assert.assertEquals(sb.toString(), order.toString());
     }
 
 }
