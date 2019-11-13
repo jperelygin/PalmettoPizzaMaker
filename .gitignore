@@ -1,4 +1,12 @@
+# For Intellj IDEA
 target/
 .idea/
 
+# For vscode
+.vscode/
+.classpath
+.settings
+.project
+
+# For entire java
 *.class

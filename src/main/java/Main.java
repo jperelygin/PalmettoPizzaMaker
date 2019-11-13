@@ -2,7 +2,6 @@ import PizzaTypes.Pizza;
 import PizzaTypes.Margarita;
 import PizzaTypes.PepperoniOro;
 
-import Ingredients.*;
 
 public class Main {
 	

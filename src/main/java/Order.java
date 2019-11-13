@@ -11,11 +11,14 @@ public class Order {
     private int clientNumber;
     ArrayList<Pizza> pizzaArray = new ArrayList<>();
 
+    private double totalOrderPrice;
+
     Order(int clientNumber){
 		this.clientNumber = clientNumber;
 		setOrderNumber(Order.orderNumberCounter);
 		Order.incOrderNumberCounter();
     }
+
 	
 	private static void incOrderNumberCounter(){
 		Order.orderNumberCounter++;
@@ -41,14 +44,18 @@ public class Order {
 	
 	public int getClientNumber(){
 		return this.clientNumber;
-	}
+    }
+    
+    public double getTotalOrderPrice(){
+        return this.totalOrderPrice;
+    }
 
-    private double totalOrderPrice(){
+    private void totalOrderPrice(){
         double result = 0;
         for (Pizza p : pizzaArray){
             result += p.getPizzaPrice();
         }
-        return result;
+        this.totalOrderPrice = result;
     }
 	
 	private boolean checkSize(){
@@ -64,7 +71,8 @@ public class Order {
 			pizzaArray.add(pizza);
 		} else {
 			throw new ArrayStoreException("Too many pizzas!");
-		}
+        }
+        totalOrderPrice();
 	}
 
     @Override
@@ -85,7 +93,7 @@ public class Order {
             sb.append("Pizzas:\t\t" + p.getNumberOfPizzas()+ "\n") ;
             sb.append(line);
         }
-        sb.append("Total amount:\t" + this.totalOrderPrice() + " Eu\n");
+        sb.append("Total amount:\t" + this.totalOrderPrice + " Eu\n");
         sb.append(stars);
         return sb.toString();
     }
