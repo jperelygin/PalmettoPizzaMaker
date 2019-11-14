@@ -95,15 +95,15 @@ public class Order {
         sb.append("Order: " + this.orderNumber + "\n");
         sb.append("Client: " + this.clientNumber + "\n\n");
         for(Pizza p : pizzaArray){
-            sb.append("Pizza Name: " + p.getPizzaName() + "\n");
+            sb.append(LineFormatter.formatForReciept("Pizza Name:@" + p.getPizzaName() + "\n"));
             sb.append(line);
             sb.append(p.getIngredientsCheck());
             sb.append(line);
-            sb.append("Total:\t\t" + df.format(p.getPizzaPrice()) + " Eu\n");
-            sb.append("Pizzas:\t\t" + df.format(p.getNumberOfPizzas()) + "\n") ;
+            sb.append(LineFormatter.formatForReciept("Total:@" + df.format(p.getPizzaPrice()) + " Eu\n"));
+            sb.append(LineFormatter.formatForReciept("Pizzas:@" + df.format(p.getNumberOfPizzas()) + "\n"));
             sb.append(line);
         }
-        sb.append("Total amount:\t" + df.format(this.totalOrderPrice) + " Eu\n");
+        sb.append(LineFormatter.formatForReciept("Total amount:@" + df.format(this.totalOrderPrice) + " Eu\n"));
         sb.append(stars);
         return sb.toString();
     }

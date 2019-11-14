@@ -1,5 +1,6 @@
 package PalmettoPizzaMaker.PizzaTypes;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import PalmettoPizzaMaker.LineFormatter;
@@ -10,7 +11,7 @@ public class Pizza {
 
     boolean isCalzone = false;
     ArrayList<Ingredient> ingredients = new ArrayList<>();
-    String pizzaName = "";
+    String pizzaName;
     int numberOfPizzas;
 
     String orderNumber;
@@ -18,7 +19,9 @@ public class Pizza {
 	// how to get this number in row?
     int numberInRow;
 
-    public Pizza(){}
+    public Pizza(){
+        this.numberOfPizzas = 1;
+    }
 
     public Pizza(String orderNumber, int clientNumber, int numberInRow, boolean isCalzone) {
         this.orderNumber = orderNumber;
@@ -33,7 +36,7 @@ public class Pizza {
     }
 
     public String getPizzaName(){
-        if(this.pizzaName.equals("")){
+        if(this.pizzaName != null){
             return this.pizzaName;
         } else {
             return this.getClass().getSimpleName();
@@ -87,8 +90,9 @@ public class Pizza {
             sb.append(LineFormatter.formatForReciept("Pizza Base (Original)@1,00 Eu\n"));
         }
 		//System.out.println("Ingredients: " + this.ingredients.toString());
+        DecimalFormat df = new DecimalFormat("#0.00");
         for(Ingredient i : this.ingredients){
-            String string = i.getClass().getSimpleName() + "@" + i.getPrice() + " Eu\n";
+            String string = i.getClass().getSimpleName() + "@" + df.format(i.getPrice()) + " Eu\n";
             sb.append(LineFormatter.formatForReciept(string));
         }
         return sb.toString();
