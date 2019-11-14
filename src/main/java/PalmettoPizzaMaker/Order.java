@@ -5,6 +5,9 @@ import PalmettoPizzaMaker.PizzaTypes.Margarita;
 import PalmettoPizzaMaker.PizzaTypes.PepperoniOro;
 
 import java.text.DecimalFormat;
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
@@ -84,6 +87,12 @@ public class Order {
         totalOrderPrice();
 	}
 
+	private String getDateTime(){
+        LocalDateTime ldt = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy@HH:mm:ss");
+        return dtf.format(ldt);
+    }
+
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
@@ -93,7 +102,9 @@ public class Order {
         String line = new String(new char[32]).replace("\0", "-") + "\n";
         sb.append(stars);
         sb.append("Order: " + this.orderNumber + "\n");
-        sb.append("Client: " + this.clientNumber + "\n\n");
+        sb.append("Client: " + this.clientNumber + "\n");
+        // This is an "extra" task, that I dont want to include into tests.
+        //sb.append(LineFormatter.formatForReciept(  getDateTime() + "\n"));
         for(Pizza p : pizzaArray){
             sb.append(LineFormatter.formatForReciept("Pizza Name:@" + p.getPizzaName() + "\n"));
             sb.append(line);
