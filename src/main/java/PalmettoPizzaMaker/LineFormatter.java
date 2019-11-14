@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 
 public class LineFormatter {
 
-    public static String formatForReceipt(String string){
+    public static char[] formatForReciept(String string){
         StringBuilder formatted = new StringBuilder();
         int numberOfSpaces = 0;
 
@@ -22,7 +22,7 @@ public class LineFormatter {
         formatted.append(new String(new char[numberOfSpaces]).replace("\0", " "));
         formatted.append(splitted[1]);
 
-        return formatted.toString();
+        return formatted.toString().toCharArray();
     }
-    
+
 }

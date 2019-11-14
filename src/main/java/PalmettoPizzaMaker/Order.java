@@ -24,6 +24,9 @@ public class Order {
 		Order.incOrderNumberCounter();
     }
 
+    public static void resetCounter(){
+        orderNumberCounter = 1;
+    }
 	
 	private static void incOrderNumberCounter(){
 		Order.orderNumberCounter++;
@@ -52,12 +55,13 @@ public class Order {
     }
     
     public double getTotalOrderPrice(){
+        totalOrderPrice();
         return this.totalOrderPrice;
     }
 
     private void totalOrderPrice(){
         double result = 0;
-        for (Pizza p : pizzaArray){
+        for (Pizza p : this.pizzaArray){
             result += p.getPizzaPrice();
         }
         this.totalOrderPrice = result;
@@ -91,7 +95,7 @@ public class Order {
         sb.append("Order: " + this.orderNumber + "\n");
         sb.append("Client: " + this.clientNumber + "\n\n");
         for(Pizza p : pizzaArray){
-            sb.append("Pizza Name: " + p.getClass().getSimpleName() + "\n");
+            sb.append("Pizza Name: " + p.getPizzaName() + "\n");
             sb.append(line);
             sb.append(p.getIngredientsCheck());
             sb.append(line);

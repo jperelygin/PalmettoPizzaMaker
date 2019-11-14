@@ -33,7 +33,11 @@ public class Pizza {
     }
 
     public String getPizzaName(){
-        return this.pizzaName;
+        if(this.pizzaName.equals("")){
+            return this.pizzaName;
+        } else {
+            return this.getClass().getSimpleName();
+        }
     }
 
     private void checkPizzaName(String pizzaName){
@@ -78,14 +82,14 @@ public class Pizza {
     public String getIngredientsCheck(){
         StringBuilder sb = new StringBuilder();
         if (isCalzone){
-            sb.append("Pizza Base (Calzone)\t1,50 Eu\n");
+            sb.append(LineFormatter.formatForReciept("Pizza Base (Calzone)@1,50 Eu\n"));
         }else {
-            sb.append("Pizza Base (Original)\t1,00 Eu\n");
+            sb.append(LineFormatter.formatForReciept("Pizza Base (Original)@1,00 Eu\n"));
         }
 		//System.out.println("Ingredients: " + this.ingredients.toString());
         for(Ingredient i : this.ingredients){
-            sb.append(LineFormatter.formatForReciept(
-                i.getClass().getSimpleName() + "@" + i.getPrice() + " Eu\n"));
+            String string = i.getClass().getSimpleName() + "@" + i.getPrice() + " Eu\n";
+            sb.append(LineFormatter.formatForReciept(string));
         }
         return sb.toString();
     }

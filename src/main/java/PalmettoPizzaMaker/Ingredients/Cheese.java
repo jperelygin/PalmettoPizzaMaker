@@ -4,6 +4,6 @@ import PalmettoPizzaMaker.Ingredients.Ingredient;
 
 public class Cheese extends Ingredient {
     public Cheese(){
-        super.price = 1.0;
+        super.price = 1.00;
     }
 }
